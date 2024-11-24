@@ -22,7 +22,7 @@ const createBook = async (req: Request, res: Response): Promise<void> => {
   } catch (error) {
     // Handle Zod validation errors
     if (error instanceof ZodError) {
-      return res.status(400).json({
+        res.status(400).json({
         message: 'Validation failed',
         success: false,
         error: error.errors.map((err) => ({
@@ -44,18 +44,18 @@ const createBook = async (req: Request, res: Response): Promise<void> => {
 };
 
 const getAllBooks = async (req: Request, res: Response) => {
+  
   try {
     const { searchTerm } = req.query;
 
-    const result = await bookService.getAllBooksfromDb(
-      searchTerm as string | undefined,
-    );
+    const result = await bookService.getAllBooksfromDb(searchTerm as string);
     res.status(200).json({
-      success: true,
-      message: 'Books retrieved successfully',
+      status: true,
+      message: "Books retrieved successfully",
       data: result,
     });
-  } catch (error) {
+  }
+  catch (error) {
     res.status(500).json({
       message: 'An error occurred while fetching Book ',
       success: false,

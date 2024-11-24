@@ -8,25 +8,22 @@ const createBookInDB = async (book: TBook) => {
     return result;
   };
 
-const getAllBooksfromDb = async (searchItem: Record<string, unknown> = {}) => {
-    const { searchTerm } = searchItem;
-  
-    if (!searchTerm) {
-      return await bookModel.find();
+  const getAllBooksfromDb = async (searchTerm: string) => {
+    let result;
+    if (searchTerm) {
+      result = await bookModel.find({
+        $or: [
+          { title: { $eq: searchTerm } },
+          { author: { $eq: searchTerm } },
+          { category: { $eq: searchTerm } },
+        ],
+      });
+    } else {
+      result = await bookModel.find({});
     }
   
-    return await bookModel.aggregate([
-      {
-        $match: {
-          $or: [
-            { title: { $regex: searchTerm, $options: "i" } },
-            { author: { $regex: searchTerm, $options: "i" } },
-            { category: { $regex: searchTerm, $options: "i" } },
-          ],
-        },
-      },
-    ]);
-};
+    return result;
+  };
 
 const getBookByIdFromDb = async (_id: string) => {
     return await bookModel.findById({_id});
