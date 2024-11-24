@@ -1,10 +1,26 @@
 # Book-store-Server
 
+
+
+
+
+
+## API Endpoints
+
+### Product Endpoints
+- **GET** `/` - Retrieve all products.
+- **GET** `//:productId` - Retrieve a specific product by ID.
+- **POST** `/` - Add a new product.
+- **PUT** `//:productId` - Update an existing product.
+- **DELETE** `//:productId` - Delete a product by ID.
+
+
+
+---
+
+
+
 ## How to Run the Project
-
-
-
-
 ## Development
 
 If you're working on the code and want to quickly see changes in real-time, use the following command. It will run the project in development mode with hot-reloading, so changes will be reflected immediately without needing to restart the server.
