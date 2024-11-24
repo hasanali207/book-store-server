@@ -9,7 +9,9 @@
 
 If you're working on the code and want to quickly see changes in real-time, use the following command. It will run the project in development mode with hot-reloading, so changes will be reflected immediately without needing to restart the server.
 
+```bash
 npm run dev
+```
 This will run the server using ts-node-dev and monitor for any changes in your TypeScript files.
 
 
