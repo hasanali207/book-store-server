@@ -79,6 +79,32 @@ const getBookById = async (req: Request, res: Response) => {
   }
 };
 
+const updateBook =  async (req: Request, res: Response) => {
+  try {
+    const { productId } = req.params;
+    const upDateData = req.body;
+    const result = await bookService.updateBookByIdFromDb(
+      productId,
+      upDateData,
+    );
+    res.json({
+      message: 'Book updated successfully',
+      success: true,
+      data: result,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      message: 'An error occurred while fetching Book ',
+      success: false,
+      error: error instanceof Error ? error.message : 'Unknown error',
+      stack: null,
+    });
+  }
+
+}
+
+
 
 const deleteBook = async (req: Request, res: Response) => {
   try {
@@ -118,5 +144,6 @@ export const bookController = {
   createBook,
   getAllBooks,
   getBookById,
-  deleteBook
+  deleteBook,
+  updateBook
 };

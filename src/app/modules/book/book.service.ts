@@ -32,6 +32,12 @@ const getBookByIdFromDb = async (_id: string) => {
     return await bookModel.findById({_id});
 };
 
+const updateBookByIdFromDb = async (_id: string, book: Partial<TBook>) => {
+const result = await bookModel.findOneAndUpdate({_id}, book, {new:true})
+return result
+
+}
+
 const deleteBookByIdFromDb = async (_id: string) => {
   const result = await bookModel.findByIdAndDelete({ _id });
 return result;
@@ -47,5 +53,6 @@ return result;
     createBookInDB,
     getAllBooksfromDb,
     getBookByIdFromDb,
-    deleteBookByIdFromDb
+    deleteBookByIdFromDb,
+    updateBookByIdFromDb
   }
