@@ -32,7 +32,10 @@ const getBookByIdFromDb = async (_id: string) => {
     return await bookModel.findById({_id});
 };
 
-
+const deleteBookByIdFromDb = async (_id: string) => {
+  const result = await bookModel.findByIdAndDelete({ _id });
+return result;
+}
   
 
 
@@ -43,5 +46,6 @@ const getBookByIdFromDb = async (_id: string) => {
   export const bookService  ={
     createBookInDB,
     getAllBooksfromDb,
-    getBookByIdFromDb
+    getBookByIdFromDb,
+    deleteBookByIdFromDb
   }

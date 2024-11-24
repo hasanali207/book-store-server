@@ -80,9 +80,43 @@ const getBookById = async (req: Request, res: Response) => {
 };
 
 
+const deleteBook = async (req: Request, res: Response) => {
+  try {
+    const { productId } = req.params;
+
+    const result = await bookService.deleteBookByIdFromDb(productId);
+    if (result) {
+      res.status(200).json({
+        message: 'A Book item deleted successfully.',
+        success: true, 
+        data: {},
+      });
+    } else {
+      res.status(400).json({
+        message: 'Failed to delete the Book',
+        success: false,
+        data: {},
+        stack: null,
+      });
+    }
+  } catch (error) {
+    res.status(500).json({
+      message: 'An error occurred while deleting Book ',
+      success: false,
+      error: error instanceof Error ? error.message : 'Unknown error',
+      stack: null,
+    });
+  }
+};
+
+
+
+
+
 // Export with consistent naming
 export const bookController = {
   createBook,
   getAllBooks,
-  getBookById
+  getBookById,
+  deleteBook
 };
