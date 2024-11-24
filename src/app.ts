@@ -1,6 +1,7 @@
 import cors from 'cors';
 import express, { Application, Request, Response } from 'express';
 import { bookRoutes } from './app/modules/book/book.route';
+import { orderRoutes } from './app/modules/order/order.routes';
 const app: Application = express();
 
 // parsers
@@ -8,6 +9,7 @@ app.use(express.json());
 app.use(cors());
 
 app.use('/api/products', bookRoutes);
+app.use('/api/orders', orderRoutes);
 
 
 app.get('/', (req: Request, res: Response) => {
