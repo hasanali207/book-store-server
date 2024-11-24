@@ -4,7 +4,7 @@ const router = express.Router();
 
 
 
-router.post('/', bookController.createBook);
+router.post('/create-book', bookController.createBook);
 
 
 
