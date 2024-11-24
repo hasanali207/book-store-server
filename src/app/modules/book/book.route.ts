@@ -6,6 +6,7 @@ const router = express.Router();
 
 router.post('/', bookController.createBook);
 router.get('/', bookController.getAllBooks);
+router.get('/:productId', bookController.getBookById);
 
 
 

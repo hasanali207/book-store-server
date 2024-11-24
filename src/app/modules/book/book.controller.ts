@@ -1,7 +1,6 @@
 import { Request, Response } from 'express';
 import { bookService } from './book.service';
 import { bookSchemaValidation } from './book.validation';
-import { bookModel } from './book.model';
 
 const createBook = async (req: Request, res: Response): Promise<void> => {
   try {
@@ -45,7 +44,7 @@ const getAllBooks = async (req: Request, res: Response) => {
   try {
     const { searchTerm } = req.query;
 
-    const result = await bookService.getAllBooks(searchTerm as string | undefined);
+    const result = await bookService.getAllBooksfromDb(searchTerm as string | undefined);
     res.status(200).json({
       success: true,
       message: "Books retrieved successfully",
@@ -61,10 +60,29 @@ const getAllBooks = async (req: Request, res: Response) => {
 };
 
 
+const getBookById = async (req: Request, res: Response) => {
+  try {
+    const { productId } = req.params;
+
+    const result = await bookService.getBookByIdFromDb(productId);
+    res.status(200).json({
+      success: true,
+      message: "Book retrieved successfully",
+      data: result,
+    });
+  } catch (err: any) {
+    res.status(500).json({
+      success: false,
+      message: err.message,
+      error: err,
+    });
+  }
+};
 
 
 // Export with consistent naming
 export const bookController = {
   createBook,
-  getAllBooks
+  getAllBooks,
+  getBookById
 };

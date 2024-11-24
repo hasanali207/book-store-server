@@ -8,7 +8,7 @@ const createBookInDB = async (book: TBook) => {
     return result;
   };
 
-  const getAllBooks = async (searchItem: Record<string, unknown> = {}) => {
+const getAllBooksfromDb = async (searchItem: Record<string, unknown> = {}) => {
     const { searchTerm } = searchItem;
   
     if (!searchTerm) {
@@ -26,8 +26,13 @@ const createBookInDB = async (book: TBook) => {
         },
       },
     ]);
-  };
-  
+};
+
+const getBookByIdFromDb = async (_id: string) => {
+    return await bookModel.findById({_id});
+};
+
+
   
 
 
@@ -37,5 +42,6 @@ const createBookInDB = async (book: TBook) => {
 
   export const bookService  ={
     createBookInDB,
-    getAllBooks
+    getAllBooksfromDb,
+    getBookByIdFromDb
   }
