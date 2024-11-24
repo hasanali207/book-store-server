@@ -18,7 +18,7 @@ export const bookSchemaValidation = z.object({
     ['Fiction', 'Science', 'SelfDevelopment', 'Poetry', 'Religious'],
     {
       required_error: 'Category is required',
-      invalid_type_error: 'category is invalid',
+      invalid_type_error: 'category is not valid',
     },
   ),
   description: z.string({

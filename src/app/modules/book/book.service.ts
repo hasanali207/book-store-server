@@ -8,6 +8,34 @@ const createBookInDB = async (book: TBook) => {
     return result;
   };
 
+  const getAllBooks = async (searchItem: Record<string, unknown> = {}) => {
+    const { searchTerm } = searchItem;
+  
+    if (!searchTerm) {
+      return await bookModel.find();
+    }
+  
+    return await bookModel.aggregate([
+      {
+        $match: {
+          $or: [
+            { title: { $regex: searchTerm, $options: "i" } },
+            { author: { $regex: searchTerm, $options: "i" } },
+            { category: { $regex: searchTerm, $options: "i" } },
+          ],
+        },
+      },
+    ]);
+  };
+  
+  
+
+
+
+
+
+
   export const bookService  ={
-    createBookInDB
+    createBookInDB,
+    getAllBooks
   }
