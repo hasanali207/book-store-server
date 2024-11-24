@@ -16,6 +16,11 @@
 
 
 
+### Order Endpoints
+- **GET** `/revenue` - Retrieve all revenue.
+- **POST** `/` - Add a new Order.    /api/orders
+
+
 ---
 
 
