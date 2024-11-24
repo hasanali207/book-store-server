@@ -28,4 +28,4 @@ const BookSchema = new Schema<TBook>(
   },
 );
 
-export const Book = model<TBook>('Product', BookSchema);
+export const bookModel = model<TBook>('Book', BookSchema);
