@@ -9,10 +9,10 @@
 
 ### Product Endpoints
 - **GET** `/` - Retrieve all products.
-- **GET** `//:productId` - Retrieve a specific product by ID.
+- **GET** `/:productId` - Retrieve a specific product by ID.
 - **POST** `/` - Add a new product.
-- **PUT** `//:productId` - Update an existing product.
-- **DELETE** `//:productId` - Delete a product by ID.
+- **PUT** `/:productId` - Update an existing product.
+- **DELETE** `/:productId` - Delete a product by ID.
 
 
 
