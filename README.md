@@ -1,26 +1,43 @@
 # Book-store-Server
-# How to Run the Project
-# Development
+
+## How to Run the Project
+
+
+
+
+## Development
+
 If you're working on the code and want to quickly see changes in real-time, use the following command. It will run the project in development mode with hot-reloading, so changes will be reflected immediately without needing to restart the server.
-
-
 
 npm run dev
 This will run the server using ts-node-dev and monitor for any changes in your TypeScript files.
 
-# Production
+
+
+## Production
+
 Before deploying the project to a production environment, you need to compile the TypeScript code into JavaScript. Use the following two commands to prepare the project for production:
 
 First, build the project:
 
+```bash
 npm run build
+```
+
 This will compile the TypeScript code into JavaScript files and place them in the dist/ directory.
 
 After building the project, run the production server:
+
+```bash
 npm run prod
+```
+
 This will start the server using the compiled server.js file from the dist/ folder.
 
-# Deploy to Vercel
+## Deploy to Vercel
+
 Once your project is ready and you want to deploy it to Vercel, simply use the following command. This will deploy your project to Vercel and make it live:
 
+```bash
 npm run deploy
+```
